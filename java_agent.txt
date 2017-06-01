@@ -1,0 +1,20 @@
+
+Function 1 (General)
+Input:
+	1. A Java Folder
+	2. Main class
+
+Output:
+	1. Main Class
+
+	2. Main Flow: Flow chart
+
+	3. List of independent Libraries 
+
+Function 2 (Comprehensive)
+Input:
+	Java piece of code
+
+Output:
+	"Purpose" of this code
+	Flow chart 

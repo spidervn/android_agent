@@ -1,0 +1,49 @@
+
+Java Agent State Machine
+1. Features
+	i) Ask what people want ?
+	ii) Searching ?
+	iii) Print out list functions ?
+
+	iv) Optimize system 
+	v) Content comparision 
+	
+2. State Machine
+	
+	ready
+		wait 
+		wait_too_long => ask 
+		ask_too_much => wait_long
+		wait_long too long => ask
+
+	ask
+		recommend list of questions 
+		input_ask by typing
+			auto completion works
+		input_ask by voice 
+			voice recognition works 
+
+	
+	knowledge_loading 
+		wait
+		load_new
+		scan_new
+
+	
+	answer
+		scan_knowledge
+			answer a question 
+			solve a problem 	
+	display
+		print_output
+		printing_output
+	
+
+3. Atomic StateMachine
+	3.1) Max length State Machine
+		State = max_length		
+		input --> state = state-1
+				state < 0 => outPut = false
+				state >= 0 => outPut = true
+	3.2) Max length State Machine 
+		
