@@ -34,5 +34,15 @@ def conflict_workflow():
 def primitive_in_out():
     return
 
+def ComicStudioMain:
+
+    def __init__(self):
+        self.count = 0
+
+        self.dict_knowledge = {}    # Dictionary of task 
+        self.core_task = {}         # Core of Tasking
+        self.
+
+
 def main():
     print "Main function"
