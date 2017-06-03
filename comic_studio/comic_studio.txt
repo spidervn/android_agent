@@ -1,0 +1,19 @@
+
+Comic studio is multi-purpose program. 
+Which contains some features like:
+	i) Auto ask owner what to do
+	ii) Silence 
+	iii) [ Audio recognition ] (Advanced)
+
+	iv) Do domestic tasks:
+		- Upload comic 
+		- Bulk update
+		- Extremely quick data manipulating task
+
+		- Ability to define new task
+
+	v) UI
+		- Terminal interface
+		
+	vi) Ability for writing extension 
+		
