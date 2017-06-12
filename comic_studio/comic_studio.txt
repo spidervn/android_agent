@@ -16,4 +16,6 @@ Which contains some features like:
 		- Terminal interface
 		
 	vi) Ability for writing extension 
-		
+
+Which contains some features like:
+	i) 

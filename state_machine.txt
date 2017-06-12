@@ -1,0 +1,56 @@
+
+State Machine for ComicStudio
+
+1/ Auto asking state diagram
+	States
+		idle
+		wait 
+		ask
+		accept_question
+		process_question
+		answer
+
+	Diragram
+		wait:
+			input(no_action) => idle
+			input(no_action) [time_wait > wait_threshold[1]] => long_idle
+		long_wait:
+			input(no_action) => ask_owner
+			input(no_action)[ask_too_much] => long_long_wait 
+			input(no_action)[wait_too_much] => idle
+
+		idle:
+			input(no_action) => idle
+	
+		idle:
+			input(data) => accept_question
+
+		accept_question
+			input(no_action) => default(no_action)
+		
+		process_question:
+			input(no_action) => answer
+
+		answer:
+			input(no_action), output=answer => wait
+	
+2/ Note:
+	2.1) Smoothly change states
+		answer -> ready_answer -> wait -> idle -> long_idle
+		
+		=> The state machine should implement this by
+
+		i) Doing a SmoothChange state machine 			
+
+	2.2) Immediately change states
+		answer --> long_idle 
+
+	2.2) Smoothly upgrade states
+ 
+3/ Primitive state machine
+	SmoothChange:
+		Constructor(list_of_smooth_states)
+		step() = output is next state
+		
+	ExtraStateMachine
+		
