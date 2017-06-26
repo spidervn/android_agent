@@ -13,7 +13,7 @@ def file_func():
     s.refresh()
 
     c = s.getch()
-
+       
     if c in (ord('T'), ord('i'), curses.KEY_ENTER, 10):
         curses.echo()
         s.erase()

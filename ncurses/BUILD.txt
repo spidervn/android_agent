@@ -1,0 +1,10 @@
+
+MENU & CURSES BUILD
+Build command for most of example:
+	g++ ex23.cpp -lncurses -lmenu 
+
+FORM BUILD
+	g++ ex25.cpp -lform -lncurses
+
+NOte: add -lpanel if needed
+

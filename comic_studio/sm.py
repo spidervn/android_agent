@@ -180,6 +180,4 @@ class ParallelAdd(Parallel):
         (newS1, o1) = self.m1.getNextValues(s1, inp)
         (newS2, o2) = self.m2.getNextValues(s2, inp)
 
-        return ((newS1, newS2), o1+2o))
-
-class 
+        return ((newS1, newS2), o1+2o)
