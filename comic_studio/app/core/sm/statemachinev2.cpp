@@ -117,6 +117,18 @@ int StateMachineV2::step(int input, int& output)
 {
 	int nextState;
 	TransitionHandler* pHandler;
+	/*
+	StateMachineV2* pSubMachine = NULL;
+	bool bIsSubNode = false;
+
+	if (bIsNodeSub) {
+		if (pSubMachine->isEnded()) {
+			
+		} else {
+			pSubMachine->step(input, output);
+		}
+	}
+	*/
 
 	if (calcNextState(input, currentState, output, nextState) == RES_OK) 
 	{

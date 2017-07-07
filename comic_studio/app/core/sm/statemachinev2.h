@@ -26,7 +26,7 @@ public:
 
 	int defineMachine(unsigned int* inputVocabulary, int coutInputVocab, unsigned int* outputVocabulary, int coutOutputVocab, unsigned int* stateVocabulary, int stateCount, unsigned int startState, unsigned int endState);
 
-	int calcNextState(int input, int currentState, int& output, int& nextState);
+	virtual int calcNextState(int input, int currentState, int& output, int& nextState);
 
 	int registerTransition(unsigned int stateFrom, unsigned int stateTo, TransitionHandler* pHandler);
 
