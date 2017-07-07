@@ -1,0 +1,163 @@
+state_machine_normal = {
+	behavior: {
+		calcNextState: [],
+		step: [],						// calcNextState & call TransitHandler here
+		setTransitHandler: [],
+	},
+}
+
+graph_machine = {
+	behavior: {
+		inherit: [
+			state_machine_normal: [
+				step,					// calcNextState & call TransitHandler here
+				setTransitHandler		// Transition handler setting
+			]
+		],
+		
+		calcNextState: [
+			step,
+			setTransitHandler,
+		],			// Calculate next State based on graph
+	}
+},
+
+q_a = {
+	how_to_setup_sub_statemachine: {
+		'in graph_machine',
+		solution: [
+
+			'dummy_solution': [
+				'override step function'
+			],
+
+			'better_solution': [
+				'do not override step function' : [
+					'step function cover that case',
+					'step function know when to enter sub state machine',
+					'sub machine definition: define sub Machine method : m(state, sub_machine)',
+				] 
+			],
+
+			'calcNextState': 'return a pointer to effected Machine',
+
+			'default': [
+				'return a pointer'
+			],
+
+			'not_default': [
+				'return a pointer to effected machine'
+			]
+		]
+	}
+},
+
+qa_1 = {
+	how_sub_machine_works: [
+		terms: [
+			'machine',
+			'sub_machine'
+		],
+
+		work_flow: [
+			case_1: [
+				'not enter sub machine',
+				[ machine, machine.step(input) ]
+			],
+
+			case_2: [
+				'entering sub_machine',
+				[ machine, machine.step(input), sub_machine.step(input), sub_machine.is_end(), machine.step(sub_machine.output) ], 
+				[ machine, 
+					machine.step(),
+						sub_machine.is_end():				// Is not ended yet
+							machine.step((input, sub_machine.output()))				// Works on main machine
+						!sub_machine.is_end(): 				// 
+							sub_machine.step(input)			// 
+				]
+			]
+		]
+	]
+}
+
+qa_3: [
+	'output of sub machine?': [
+		'no care',
+		'for main machine decide next states'
+	]
+]
+
+qa_3: [
+	'output of sub machine': [
+		'no care',
+		'for main machine decide next states'
+	]
+]
+
+state_machine_usage: {
+	StateMachineV2 sm;
+
+	sm = new StateMachineV2();
+	sm->getNextState();
+	
+	sm->step(input);
+}
+
+var state_machine_interface = {
+	StataMachineV2 sm;
+	StateMachineV2 myAI;
+
+	sm.define();
+
+	App app = new App();
+
+	app.attach(sm);
+	app.run();
+
+	myAI.run();
+	myAI.setMVC(new AppUI());
+
+	sm.attach(sm);
+	myAI.setMVC(new AppUI());
+	myAI.setMVC(new AppUI());
+
+	MVC.setAI();
+
+
+	// MVC and StateMachine;
+	while (true) {
+		sm.step(default);
+	}
+
+	// Whole app = 
+
+	// Simplest things 
+	while (true) {
+		mainApp = MVC();
+		mainApp.setSM();
+
+		sm->next();
+	}
+
+	// 2 layer Menu 
+	MainApp app;
+	app.setMenu1();
+	app.setMenu2();
+
+	StateMachineV2 sm;
+	sm.define(graph);
+
+	pTransitionHandler {
+		doTransit(from,to,val) {
+			if (from == BEGIN && TO == MAIN_MENU) {
+				choice = tMenu.show();
+
+				sm.step(choice);
+			} 
+			if (from == BEGIN && to == AI_QUESTION) {
+				choice = tMenuAI.show();
+				sm.step(choice);
+			}
+		}
+	}
+} 
