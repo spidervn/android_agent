@@ -8,17 +8,16 @@
 #include "comicutil.h"
 
 using namespace std;
-int ComicUtil::scandir(const char* szDir)
+int ComicUtil::scanDir(const char* szDir, vector<string>& vComicDir, vector<string>& vChapterDir)
 {
 	DIR* pDir; 
 	struct dirent* pEnt;
 	struct stat stat_path;
 	string sBaseDir;
-	vector<string> vComicDir; 
-	vector<string> vChapterDir;
 
 	string stackDir[2000];
 	int nStackDir = 0;
+	int nDirType = DIR_TYPE_INVALID;
 	
 
 	// 
@@ -39,59 +38,53 @@ int ComicUtil::scandir(const char* szDir)
 	while (nStackDir > 0) {
 		string sBaseDir = stackDir[--nStackDir];
 
-		// Check this dir 		
-		stat(sBaseDir.c_str(), &path_stat);
+		// Temp code
+		printf("Checking %s\r\n", sBaseDir.c_str());
 
-		if (S_ISDIR(path_stat.st_mode)) {
-			// Scan content 
+		// Check this dir 		
+		stat(sBaseDir.c_str(), &stat_path);
+
+		if (S_ISDIR(stat_path.st_mode)) {
+
+			nDirType = checkDirType(sBaseDir.c_str());
+
+			// Temp code
+			printf("%s = %d\r\n", sBaseDir.c_str(), nDirType);
+
+			if (nDirType == DIR_TYPE_COMIC) {
+				vComicDir.push_back(sBaseDir);
+			} else if (nDirType == DIR_TYPE_CHAPTER) {
+				vChapterDir.push_back(sBaseDir);
+			}
+
+			// Scan all sub directory
 			if ((pDir = opendir(sBaseDir.c_str())) != NULL) 
 			{
-				while ((pEnt = readdir(pDir) != NULL)	
+				while ((pEnt = readdir(pDir)) != NULL)
 				{
-					string sOneFile = sBaseDir + "/" + pDir->d_name;
+					string sOneFile = sBaseDir + "/" + pEnt->d_name;
 					struct stat stat1F;
 
 					stat(sOneFile.c_str(), &stat1F);
-					
 
-					if (sOneFile.c_str()) {					
+					// Push into Stack 
+					if (S_ISDIR(stat1F.st_mode) && strcmp("..",pEnt->d_name )!= 0 && strcmp(".", pEnt->d_name) != 0) {
+						stackDir[nStackDir++] = sOneFile;
 					}
 				}
 
 			}
 
-			if (p
-
-		} else if (S_ISREG(path_stat.st_mode)) {
-			// Ignore			
-			prinf("Invalid directory");
 		} else {
-			// Failed
-		}	
-	}
-
-	pDir = opendir(szDir);
-	while (nStackDir > 0) 
-	{
-
-	}
-
-	if ((pDir = opendir(szDir)) != NULL) 
-	{
-		while ((pEnt = readdir(pDir)) != NULL) 
-		{
-			string sFullPath = string("") + szDir + "/" + pEnt->d_name;
-	
-					
-			// Full path 
+			// Temp code
+			printf("Not dir %s\r\n", sBaseDir.c_str());
 		}
 	}
-
 	return 0;
 }
 
 
-int ComicUtil::checkOneDir(const* char szDir) 
+int ComicUtil::checkDirType(const char* szDir) 
 {
 	/*
 	 * return Dir type 
@@ -115,38 +108,54 @@ int ComicUtil::checkOneDir(const* char szDir)
 	{
 		// IS_DIR
 		DIR* pDir;
+		struct dirent* pEnt;
 
-		if((pDir = opendir(szDir)) != NULL)) 
+		if((pDir = opendir(szDir)) != NULL) 
 		{
 			while ((pEnt = readdir(pDir)) != NULL) 
 			{
 				string sFullPath = string("") + szDir + "/" + pEnt->d_name;
-				if (isFile(pEnt->d_name) && isImageFile(pEnt->d_name)) 
-				{	
-															if (isImageFile(pEnt->d_name)
+				if (isFile(sFullPath.c_str()) && isImageFile(sFullPath.c_str())) 
+				{
+					if (isImageFile(pEnt->d_name))
 						nCountImg++;
 					else 
 						nCountOther++;
 				}
 			}	
+		} else {
+			printf("HERE 2 %s\r\n", szDir);
 		}
 	}
 	else 
 	{
 		// Invalid
+		printf("HERE \r\n");
 		return -1;
 	}
 
 
-	if (nCountImg >= 10 && nCountOther < 5) {
+	if (nCountImg >= 10 && nCountOther < 5 + 2) {
 		return DIR_TYPE_CHAPTER;
-	} else if (nCountImg < 10 && nCountOther < 5) {
+	} else if (nCountImg < 10 && nCountOther < 5 + 2) {
 		return DIR_TYPE_COMIC;
-	} else {
+	} else {		
+
+		printf("Dir Type %s: %d; %d\r\n", szDir, nCountImg, nCountOther);
+
 		return DIR_TYPE_NORMAL;
 	}
 
 	return DIR_TYPE_INVALID;
+}
+
+bool ComicUtil::isFile(const char* szFile) 
+{
+	struct stat stat1;
+
+	stat(szFile, &stat1);
+
+	return S_ISREG(stat1.st_mode);
 }
 
 bool ComicUtil::isImageFile(const char* szFile) 

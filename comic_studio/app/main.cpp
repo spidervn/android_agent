@@ -5,7 +5,11 @@
 #include <unistd.h>
 #include "core/sm/statemachine.h"
 #include "tmenu.h"
+#include "comicutil.h"
 #include <dirent.h>
+#include <vector>
+#include <string>
+
 using namespace std;
 
 #define STT_AI_WAIT 0
@@ -69,7 +73,24 @@ int main(int argc, char** argv)
 	};	
 	*/
 
-	scandir();
+	// scandir();
+	ComicUtil cu;
+	vector<string> v_comic;
+	vector<string> v_chap;
+
+	cu.scanDir("/home/spider/projects/truyenspidermanvn/contents-toweb/AlphaBigTime", v_comic, v_chap);
+
+	printf("Comic list\r\n");
+	for (int i=0;i<v_comic.size();i++) {
+		printf("\t%d. %s\r\n", (i+1), v_comic[i].c_str());
+	}
+
+	printf("Chapter list\r\n");
+	for (int i=0;i<v_chap.size();i++) {
+		printf("\t%d. %s\r\n", (i+1), v_chap[i].c_str());
+	}
+
+
 	/*
 	StateMachine m1;
 	RepeatMachine m(&m1);

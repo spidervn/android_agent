@@ -2,6 +2,7 @@
 #define  _COMIC_UTIL_H_
 
 #include <string>
+#include <vector>
 
 typedef struct ComicDir_Struct {
 	std::string dirName;
@@ -25,10 +26,19 @@ public:
 	static const int DIR_TYPE_CHAPTER = 0;
 	static const int DIR_TYPE_COMIC = 1;
 	static const int DIR_TYPE_NORMAL = 2;
+	static const int DIR_TYPE_INVALID = -1;
 
 	ComicUtil() {};
 
-	int scanDir(const char* szDir);
+	int scanDir(const char* szDir, std::vector<std::string>& vComicDir, std::vector<std::string>& vChapterDir);
+
+protected:
+	int checkDirType(const char* szDir);
+
+	bool isImageFile(const char* szFile);
+
+	bool isFile(const char* szFile);
+
 };
 
 #endif
