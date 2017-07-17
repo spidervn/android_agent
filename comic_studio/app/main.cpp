@@ -6,6 +6,7 @@
 #include "core/sm/statemachine.h"
 #include "tmenu.h"
 #include "comicutil.h"
+#include "comicdb.h"
 #include <dirent.h>
 #include <vector>
 #include <string>
@@ -91,6 +92,18 @@ int main(int argc, char** argv)
 	}
 
 
+	ComicDB 
+	db("host=localhost port=5433 dbname=spider_dev user=spider_dev password=123456 connect_timeout=10");
+	db.load2();
+
+	ComicObject comic;
+	comic.title = "XXX";
+	int id = 0;
+	int ret = 0;
+
+	ret = db.createObj(comic, id);
+
+	printf("Insert ret=%d,ret_id = %d\r\n", ret, id);
 	/*
 	StateMachine m1;
 	RepeatMachine m(&m1);

@@ -49,5 +49,9 @@ int array_diff(T a[], int nA,  T b[], int nB,  std::vector<T> vDiffA, std::vecto
 	return nSame;
 }
 
+std::string getParentPath(const char* szPath) {
+	return std::string("");
+}
+
 
 #endif 

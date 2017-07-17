@@ -39,6 +39,10 @@ protected:
 
 	bool isFile(const char* szFile);
 
+	int getImageFiles(const char* szDir,int limit ,std::vector<std::string>& vImg);
+
+	void printComic(ComicDir&);
+	void printChapter(ChapterDir&);
 };
 
 #endif
