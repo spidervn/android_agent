@@ -12,7 +12,7 @@ class IApproach
 {
 public:
 	virtual ~IApproach();
-	virtual long complexity() = 0;	
+	virtual long complexity() = 0;
 };
 
 #endif /* APP_ESTIMATION_INTERFACE_IAPPROACH_H_ */
