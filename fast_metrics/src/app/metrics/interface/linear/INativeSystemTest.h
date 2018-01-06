@@ -9,7 +9,12 @@
 #define APP_METRICS_INTERFACE_INATIVESYSTEMTEST_H_
 
 
-
+class INativeSystemTest
+{
+public:
+	virtual ~INativeSystemTest() {}
+	virtual long complexity_() = 0;	
+};
 
 
 #endif /* APP_METRICS_INTERFACE_INATIVESYSTEMTEST_H_ */

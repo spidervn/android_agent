@@ -13,7 +13,7 @@ class IDesignInterface
 {
 public:
 	virtual ~IDesignInterface() {}
-	
+	virtual long complexity_() = 0;	
 };
 
 

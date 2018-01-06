@@ -13,6 +13,7 @@ class IDesignUnitTest
 {
 public:
 	virtual ~IDesignUnitTest() {}
+	virtual long complexity_() = 0;
 };
 
 

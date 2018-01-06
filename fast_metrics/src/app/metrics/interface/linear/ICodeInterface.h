@@ -13,7 +13,7 @@ class ICodeInterface
 {
 public:
 	virtual ~ICodeInterface() {}
-	
+	virtual long complexity_() = 0;
 };
 
 

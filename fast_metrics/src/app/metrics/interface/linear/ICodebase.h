@@ -17,5 +17,4 @@ public:
 	virtual long count_Methods() = 0;	
 };
 
-
 #endif /* APP_METRICS_INTERFACE_ICODEBASE_H_ */
