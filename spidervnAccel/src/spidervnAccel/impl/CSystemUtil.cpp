@@ -13,6 +13,8 @@
 #include <string>
 #include <array>
 
+using namespace std;
+
 CSystemUtil::CSystemUtil() {
 	// TODO Auto-generated constructor stub
 
@@ -26,7 +28,7 @@ std::string CSystemUtil::exe_Cmd(std::string cmd)
 {
 	std::array<char, 128> buffer;
 	std::string result;
-	std::shared_ptr<FILE> pipe(popen(cmd, "r"), pclose);
+	std::shared_ptr<FILE> pipe(popen(cmd.c_str(), "r"), pclose);
 	if (!pipe)
 		throw std::runtime_error("popen() failed!");
 	while (!feof(pipe.get())) {

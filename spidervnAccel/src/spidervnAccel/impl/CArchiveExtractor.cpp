@@ -11,6 +11,8 @@
 #include <string>
 #include <algorithm>
 
+#include "CSystemUtil.h"
+
 using namespace std;
 
 CArchiveExtractor::CArchiveExtractor(IDirectoryUtil* dirUtil)
@@ -46,8 +48,8 @@ int CArchiveExtractor::extract_Archive__(std::string fileArchive, std::string di
 		ext04 = file_Name__.substr(file_Name__.length() >= 4 ? file_Name__.length() - 4 : 0, 4 );
 		ext07 = file_Name__.substr(file_Name__.length() >= 7 ? file_Name__.length() - 7 : 0, 7);
 
-		std::transform(ext04.begin(), ext04.end(), ::tolower);
-		std::transform(ext07.begin(), ext07.end(), ::tolower);
+		std::transform(ext04.begin(), ext04.end(), ext04.begin(), ::tolower);
+		std::transform(ext07.begin(), ext07.end(), ext07.begin(), ::tolower);
 
 		if (ext04 == ".tar" || ext07 == ".tar.gz")
 		{
@@ -79,8 +81,8 @@ bool CArchiveExtractor::isArchiveFile(std::string sfile)
 	ext04 = sfile.substr(sfile.length() >= 4 ? sfile.length() - 4 : 0, 4);
 	ext07 = sfile.substr(sfile.length() >= 7 ? sfile.length() - 7 : 0, 7);
 
-	std::transform(ext04.begin(), ext04.end(), ::tolower);
-	std::transform(ext07.begin(), ext07.end(), ::tolower);
+	std::transform(ext04.begin(), ext04.end(), ext04.begin(), ::tolower);
+	std::transform(ext07.begin(), ext07.end(), ext07.begin(), ::tolower);
 
 	return ext04 == ".tar" || ext07 == ".tar.gz" ||
 			ext04 == ".zip" ||

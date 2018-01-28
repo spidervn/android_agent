@@ -6,6 +6,8 @@
  */
 
 #include "CCommander.h"
+#include "CSystemUtil.h"
+#include "CDirectoryUtil.h"
 
 CCommander::CCommander() 
 {
@@ -23,6 +25,11 @@ int CCommander::extract_AllArchiveComic(std::string sPath)
 	 * EAC1. Find all archive file
 	 * EAC2. Each archive file, extract it to currentFolder
 	 */
+	IDirectoryUtil* pDu;
+	ISystemUtil* pSu;
+
+	pDu = new CDirectoryUtil();
+	pSu = new CSystemUtil();
 
 
 
