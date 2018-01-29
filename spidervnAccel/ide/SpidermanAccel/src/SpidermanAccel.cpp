@@ -4,7 +4,8 @@ using namespace std;
 #include "spidervnAccel/impl/CSystemUtil.h"
 #include "spidervnAccel/impl/test/CUnitTestMain.h"
 #include "spidervnAccel/impl/CCommander.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 
 int main() {
 	cout << "SpidermanVN accelerator" << endl;

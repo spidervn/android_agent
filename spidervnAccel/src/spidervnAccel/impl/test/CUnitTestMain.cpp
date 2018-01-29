@@ -84,7 +84,6 @@ void CUnitTestMain::testDirectory()
 	string sExpectedName = "myspiderman.tar.gz";
 	string sExpectedTruncName_ = "myspiderman";
 
-
 	string sExt_;
 	string sName;
 	string sName_Trunc;

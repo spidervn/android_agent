@@ -15,6 +15,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 using namespace std;
 
 CCommander::CCommander() 
@@ -79,30 +81,30 @@ int CCommander::extract_AllArchiveComic(std::string sPath)
 				// pExtractor_->extract_Archive__(pDu->joinDirectory(sPath, vFile[i]), pDu->joinDirectory(sPath, sExtractTo_));
 				//
 			}
-
-			printf("The following archive comic files will be extracted:\r\n");
-			for (int i=0;i<vExtractFrom_.size();i++)
-			{
-				printf("\t%d. Archive file %s will be extracted to %s\r\n", (i+1), vExtractFrom_[i].c_str(), vExtractTo_[i].c_str());
-			}
-
-			while (!(sChoice == "y" || sChoice == "Y" || sChoice=="n" || sChoice=="N"))
-			{
-				printf("Do you want to proceed (Y/N)?");
-				std::cin >> sChoice;
-			}
-
-			if (sChoice == "y" || sChoice == "Y")
-			{
-				for (int i=0;i<vExtractFrom_.size();i++)
-				{
-					printf("%d. Extracting from %s to %s\r\n", (i+1), vExtractFrom_[i].c_str(), vExtractTo_[i].c_str());
-					pExtractor_->extract_Archive__(vExtractFrom_[i], vExtractTo_[i]);
-					printf("\tFinish!");
-				}
-			}
-
 		}
+		printf("The following archive comic files will be extracted:\r\n");
+		for (unsigned int i=0;i<vExtractFrom_.size();i++)
+		{
+			printf("\t%d. Archive file %s will be extracted to %s\r\n", (i+1), vExtractFrom_[i].c_str(), vExtractTo_[i].c_str());
+		}
+
+		while (!(sChoice == "y" || sChoice == "Y" || sChoice=="n" || sChoice=="N"))
+		{
+			printf("Do you want to proceed (Y/N)?");
+			std::cin >> sChoice;
+		}
+
+		printf("Your answer is %s\r\n", sChoice.c_str());
+		if (sChoice == "y" || sChoice == "Y")
+		{
+			for (unsigned int i=0;i<vExtractFrom_.size();i++)
+			{
+				printf("%d. Extracting from %s to %s\r\n", (i+1), vExtractFrom_[i].c_str(), vExtractTo_[i].c_str());
+				pExtractor_->extract_Archive__(vExtractFrom_[i], vExtractTo_[i]);
+				printf("\tFinish!\r\n");
+			}
+		}
+
 	}
 
 	return 0;
@@ -110,5 +112,17 @@ int CCommander::extract_AllArchiveComic(std::string sPath)
 
 int CCommander::prepare_bulk_upload(std::string sExtractedComicPath)
 {
+	/*
+	 * PBU1. Check preRequisite
+	 * 			bulk_make_quality.sh
+	 *			make_comic_avatar.sh
+	 *			make_image_quality.sh
+	 * PBU2.
+	 * 			Run bulk_make_quality.sh
+	 * PBU3.
+	 *			For each ExtractedComicFolder
+	 *				Create an ComicInfo folder
+	 */
+
 	return 0;
 }
