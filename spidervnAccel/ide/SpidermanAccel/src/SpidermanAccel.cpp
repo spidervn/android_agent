@@ -19,8 +19,20 @@ int main() {
 	pSU = new CSystemUtil();
 	pCmd_ = new CCommander();
 
-	pCmd_->extract_AllArchiveComic(".");
-	// pSU->exe_Cmd("cp -i /home/spider/2.txt /home/spider/1.txt");
+	if (pCmd_->preRequisiteCheck() == 0)
+	{
+		printf("================================================================================\r\n");
+		printf("\t[SpidermanvnProject] Extract all archive comic in this folder.\r\n");
+		printf("================================================================================\r\n");
+		pCmd_->extract_AllArchiveComic(".");
+		printf("================================================================================\r\n");
+		printf("\t[SpidermanvnProject] Finish extract.\r\n");
+		printf("================================================================================\r\n");
+	}
+	else
+	{
+		printf("[SpidermanvnProject] Your system does not have enough requirements for run the work.\r\n");
+	}
 
 	delete pCmd_;
 	delete pSU;

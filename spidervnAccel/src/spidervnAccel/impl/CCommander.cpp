@@ -14,7 +14,7 @@
 
 #include <string>
 #include <vector>
-
+#include <iostream>
 using namespace std;
 
 CCommander::CCommander() 
@@ -45,11 +45,14 @@ int CCommander::extract_AllArchiveComic(std::string sPath)
 	string s_Path = ".";
 	string sNameTrunc;
 	string sExtractTo_;
+	string sChoice = "";
 	int nInc = 0;
 	char szTmp[13];
 	vector<string> vDir_;
 	vector<string> vFile;
 
+	vector<string> vExtractFrom_;
+	vector<string> vExtractTo_;
 
 	if (pDu->enumDir(s_Path, vFile, vDir_) == 0)
 	{
@@ -67,10 +70,38 @@ int CCommander::extract_AllArchiveComic(std::string sPath)
 					sExtractTo_ = sNameTrunc + szTmp;
 				}
 
-				printf("Extract from %s to %s\r\n", pDu->joinDirectory(sPath, vFile[i]).c_str(),
-						pDu->joinDirectory(sPath, sExtractTo_).c_str());
-				pExtractor_->extract_Archive__(pDu->joinDirectory(sPath, vFile[i]), pDu->joinDirectory(sPath, sExtractTo_));
+				vExtractFrom_.push_back(pDu->joinDirectory(sPath, vFile[i]));
+				vExtractTo_.push_back(pDu->joinDirectory(sPath, sExtractTo_));
+
+				//
+				// printf("Extract from %s to %s\r\n", pDu->joinDirectory(sPath, vFile[i]).c_str(),
+				//		pDu->joinDirectory(sPath, sExtractTo_).c_str());
+				// pExtractor_->extract_Archive__(pDu->joinDirectory(sPath, vFile[i]), pDu->joinDirectory(sPath, sExtractTo_));
+				//
 			}
+
+			printf("The following archive comic files will be extracted:\r\n");
+			for (int i=0;i<vExtractFrom_.size();i++)
+			{
+				printf("\t%d. Archive file %s will be extracted to %s\r\n", (i+1), vExtractFrom_[i].c_str(), vExtractTo_[i].c_str());
+			}
+
+			while (!(sChoice == "y" || sChoice == "Y" || sChoice=="n" || sChoice=="N"))
+			{
+				printf("Do you want to proceed (Y/N)?");
+				std::cin >> sChoice;
+			}
+
+			if (sChoice == "y" || sChoice == "Y")
+			{
+				for (int i=0;i<vExtractFrom_.size();i++)
+				{
+					printf("%d. Extracting from %s to %s\r\n", (i+1), vExtractFrom_[i].c_str(), vExtractTo_[i].c_str());
+					pExtractor_->extract_Archive__(vExtractFrom_[i], vExtractTo_[i]);
+					printf("\tFinish!");
+				}
+			}
+
 		}
 	}
 
