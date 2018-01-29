@@ -1,19 +1,14 @@
-//============================================================================
-// Name        : SpidermanAccel.cpp
-// Author      : ducvd
-//============================================================================
-
 #include <iostream>
 using namespace std;
 
 #include "spidervnAccel/impl/CSystemUtil.h"
+#include "spidervnAccel/impl/test/CTestUtil.cpp"
 
 int main() {
 	cout << "SpidermanVN accelerator" << endl;
-	ISystemUtil* pSU = new CSystemUtil();
 
-	cout <<  pSU->exe_Cmd("ls /home/spider") << endl;
-	delete pSU;
+	CTestUtil cu;
+	cu.runAll_Test();
 
 	return 0;
 }

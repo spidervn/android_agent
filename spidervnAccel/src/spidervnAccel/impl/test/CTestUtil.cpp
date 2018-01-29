@@ -10,7 +10,8 @@
 #include "spidervnAccel/impl/CDirectoryUtil.h"
 #include "spidervnAccel/impl/CSystemUtil.h"
 #include <string>
-
+#include <stdlib.h>
+#include <stdio.h>
 using namespace std;
 
 CTestUtil::CTestUtil()
@@ -36,7 +37,10 @@ void CTestUtil::un_Initialize()
 
 void CTestUtil::runAll_Test()
 {
+	printf("Start UnitTest Utils\r\n");
 	testExcuteCmd();
+	testDirectory();
+	printf("Finish UnitTest Utils\r\n");
 }
 
 void CTestUtil::testExcuteCmd()
@@ -44,35 +48,93 @@ void CTestUtil::testExcuteCmd()
 	string res01;
 	string res02;
 
+	printf("\tExecuteCmd testing....");
 	res01 = _pSU_->exe_Cmd("pwd");
 	res02 = _pSU_->exe_Cmd("ls -la .");
 
 	if (!res01.empty() && !res02.empty())
 	{
-		printf("----Test ExecuteCommand\t[PASSED]");
+		printf("\t\t----Test ExecuteCommand\t[PASSED]\r\n");
 	}
 	else
 	{
-		printf("----Test ExecuteCommand\t[ERROR]********************************************************");
+		printf("\t\t----Test ExecuteCommand\t[ERROR]********************************************************\r\n");
 	}
 
-	return;
+	printf("\tExecuteCmd tested");
 }
 
 
 void CTestUtil::testDirectory()
 {
+	int n_TestCount = 0;
+	int nPassed = 0;
+	bool bOK;
+
+	printf("\tDirectory testing....\r\n");
+
 	string shome = "/home/spider/";
 	string shome_1 = "/home/spider";
-
-	string strFullPath = "/home/spider/myspiderman.tar.gz";
 	string sfile = "setup.exe";
+	string strFullPath = "/home/spider/myspiderman.tar.gz";
+
+	string sExpectedJoin = shome + sfile;
+	string sExpectedBase = shome_1;
+	string sExpectedExt_ = ".gz";
+	string sExpectedName = "myspiderman.tar.gz";
+
+	string sExt_;
+	string sName;
+	string s_Base_Path;
+
+	string sCurrentDir = ".";
+	std::vector<string> vDir_;
+	std::vector<string> vFile;
 
 	string sPath_Join_ = _pDir->joinDirectory(shome, sfile);
 	string sPath_Join1 = _pDir->joinDirectory(shome_1, sfile);
 
-	CUnitTestUtil::assert(sPath_Join1 == sPath_Join_, "Two path join must equal /home/spider/setup.exe");
-	CUnitTestUtil::assert(sPath_Join1 == "/home/spider/setup.exe", "Two path join must equal /home/spider/setup.exe");
+	// Test joining Path
+	printf("\tTest joining path...\r\n");
+	bOK = sPath_Join1 == sPath_Join_;
+	n_TestCount++;
+	nPassed += (int)bOK;
+	CUnitTestUtil::assert(bOK, "\t\tTwo path join must equal /home/spider/setup.exe");
 
+	bOK = sPath_Join1 == "/home/spider/setup.exe";
+	n_TestCount++;
+	nPassed += (int)bOK;
+	CUnitTestUtil::assert(sPath_Join1 == "/home/spider/setup.exe", "\t\tTwo path join must equal /home/spider/setup.exe");
 
+	// Test Get base Dir
+	printf("\tTest Base/Name/Extension ...\r\n");
+
+	sExt_ = _pDir->getFileExt_(strFullPath);
+	sName = _pDir->getFileName(strFullPath);
+	s_Base_Path = _pDir->getBaseDir_(strFullPath);
+
+	bOK = sExt_ == sExpectedExt_;
+	n_TestCount++;
+	nPassed += (int)bOK;
+	CUnitTestUtil::assert(bOK, "\t\tFile extension wrong");
+
+	bOK = sName == sExpectedName;
+	n_TestCount++;
+	nPassed += (int)bOK;
+	CUnitTestUtil::assert(bOK, "\t\tFilename wrong");
+
+	bOK = s_Base_Path == sExpectedBase;
+	n_TestCount++;
+	nPassed += (int)bOK;
+	CUnitTestUtil::assert(bOK, "\t\tBase directory wrong");
+
+	// Test Enumdirectory
+	printf("\tTest EnumDirectory ...\r\n");
+	_pDir->enumDir(".", vFile, vDir_);
+	bOK = vFile.size() > 0 || vDir_.size() > 0;
+	n_TestCount++;
+	nPassed += (int)bOK;
+	CUnitTestUtil::assert(bOK, "\t\tEnumdirectory wrong");
+
+	printf("\tDirectory tested [Total/Passed] = [%d/%d]", n_TestCount, nPassed);
 }
