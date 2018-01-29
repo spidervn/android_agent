@@ -19,7 +19,7 @@ int main() {
 	pSU = new CSystemUtil();
 	pCmd_ = new CCommander();
 
-	// pCmd_->extract_AllArchiveComic(".");
+	pCmd_->extract_AllArchiveComic(".");
 	// pSU->exe_Cmd("cp -i /home/spider/2.txt /home/spider/1.txt");
 
 	delete pCmd_;
