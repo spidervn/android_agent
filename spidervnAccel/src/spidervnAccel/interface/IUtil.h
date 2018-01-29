@@ -30,6 +30,9 @@ public:
 	virtual std::string getFileName(std::string strFullPath) = 0;
 	virtual std::string getFileExt_(std::string sFile) = 0;
 	virtual std::string joinDirectory(std::string spath1, std::string spath2) = 0;
+
+	virtual std::string truncFileExt_(std::string fileName) = 0;	// Truncate extension
+	virtual bool isExist(std::string sfile) = 0;
 };
 
 

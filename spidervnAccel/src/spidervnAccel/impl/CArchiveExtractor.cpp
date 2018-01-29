@@ -63,11 +63,12 @@ int CArchiveExtractor::extract_Archive__(std::string fileArchive, std::string di
 		}
 		else if (ext04==".cbz" || ext04 == ".cbr")
 		{
-			sprintf(szTmp, "unzip \"%s\" -d \"%s\"", fileArchive.c_str(), dir_Out.c_str());
+			sprintf(szTmp, "7z \"%s\" -d \"%s\"", fileArchive.c_str(), dir_Out.c_str());
 			cmd = szTmp;
 		}
 
-		pSystem->exe_Cmd(cmd);
+		printf("Execute cmd: %s\r\n", cmd.c_str());
+		// pSystem->exe_Cmd(cmd);
 	}
 
 	return nRet_;

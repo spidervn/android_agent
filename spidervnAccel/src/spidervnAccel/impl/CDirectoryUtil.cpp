@@ -7,6 +7,7 @@
 
 #include "CDirectoryUtil.h"
 #include <dirent.h>
+#include <fstream>
 
 using namespace std;
 
@@ -115,12 +116,34 @@ string CDirectoryUtil::joinDirectory(std::string spath1, std::string spath2)
 	idx = spath1.rfind(s_Separator);
 	if (idx != string::npos && idx  == spath1.length()-1)
 	{
-		res = spath1.substr(0, spath1.length() -1 ) + spath2;
+		res = spath1 + spath2;
 	}
 	else
 	{
-		res = spath1 + spath2;
+		res = spath1 + s_Separator + spath2;
 	}
 
 	return res;
+}
+
+std::string CDirectoryUtil::truncFileExt_(std::string fileName)	// Truncate extension
+{
+	string truncNm = "";
+	string s_Dot = ".";
+
+	string::size_type idx = fileName.rfind(s_Dot);
+
+	while (idx != string::npos)
+	{
+		fileName = fileName.substr(0, idx);
+		idx = fileName.rfind(s_Dot);
+	}
+
+	return fileName;
+}
+
+bool CDirectoryUtil::isExist(std::string sfile)
+{
+	std::ifstream ifile(sfile.c_str());
+	return (bool)ifile;
 }
