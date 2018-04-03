@@ -1,0 +1,27 @@
+Q01> What is the most dummy method for completing a Software Task ?
+A01> 
+	Directly work
+	1/10s of tk
+
+Q02> The effective Dummy method for estimating size of work?
+	i) Line of code (LOC)
+	ii) 
+		List of well-known + 
+		List of un-well-known + 
+		List of Unknown + 
+		List of Unknown of Unknown
+	iii) 
+Q03) Explain the very-first approach ?
+	Record the very 1st idea
+		= Fast response
+Q04) Which aspect effect to overall progress of project?
+	The size of project (PS) vs the Ability of resouces (RS)
+		if PS >>>> RS 
+			=> Crashed
+		else if PS <<<<< RS 
+			=> Boring
+		else if PS matched RS 
+			=> Ideal
+		else
+			Do not know
+Q05) 
