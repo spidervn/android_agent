@@ -5,15 +5,15 @@
  *      Author: spider
  */
 
-#ifndef SPIDERVNACCEL_IMPL_TEST_CTESTUTIL_H_
-#define SPIDERVNACCEL_IMPL_TEST_CTESTUTIL_H_
+#ifndef SPIDERVNACCEL_IMPL_TEST_CUNITTESTMAIN_H_
+#define SPIDERVNACCEL_IMPL_TEST_CUNITTESTMAIN_H_
 
 #include "spidervnAccel/interface/IUtil.h"
 
-class CTestUtil {
+class CUnitTestMain {
 public:
-	CTestUtil();
-	virtual ~CTestUtil();
+	CUnitTestMain();
+	virtual ~CUnitTestMain();
 
 	void runAll_Test();
 protected:
@@ -27,4 +27,4 @@ private:
 	ISystemUtil* _pSU_;
 };
 
-#endif /* SPIDERVNACCEL_IMPL_TEST_CTESTUTIL_H_ */
+#endif /* SPIDERVNACCEL_IMPL_TEST_CUNITTESTMAIN_H_ */

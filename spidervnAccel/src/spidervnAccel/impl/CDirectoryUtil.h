@@ -20,6 +20,9 @@ public:
 	std::string getFileName(std::string strFullPath);
 	std::string getFileExt_(std::string sFile);
 	std::string joinDirectory(std::string spath1, std::string spath2);
+
+	std::string truncFileExt_(std::string fileName);	// Truncate extension
+	bool isExist(std::string sfile);
 };
 
 #endif /* SPIDERVNACCEL_IMPL_CDIRECTORYUTIL_H_ */

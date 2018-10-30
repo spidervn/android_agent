@@ -5,19 +5,19 @@
  *      Author: spider
  */
 
-#include <spidervnAccel/impl/test/CUnitTestUtil.h>
+#include <spidervnAccel/impl/test/CUnitTestFramework.h>
 #include <stdlib.h>
 #include <iostream>
 
 using namespace std;
 
-CUnitTestUtil::CUnitTestUtil() {
+CUnitTestFramework::CUnitTestFramework() {
 }
 
-CUnitTestUtil::~CUnitTestUtil() {
+CUnitTestFramework::~CUnitTestFramework() {
 }
 
-void CUnitTestUtil::assert(bool b, std::string errmsg)
+void CUnitTestFramework::assert(bool b, std::string errmsg)
 {
 	if (!b)
 	{
