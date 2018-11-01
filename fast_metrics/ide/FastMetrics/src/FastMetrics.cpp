@@ -1,10 +1,10 @@
 #include <iostream>
 using namespace std;
 
-#include "estimation/interface/ILinearApproach.h"
-#include "io/interface/ISerializer.h"
-#include "toolkit/impl/CKnowledgeComplexity.h"
-#include "application/CKnowlegeAnalyzeApp.h"
+#include "app/estimation/interface/ILinearApproach.h"
+#include "app/io/interface/ISerializer.h"
+#include "app/toolkit/impl/CKnowledgeComplexity.h"
+#include "app/application/CKnowlegeAnalyzeApp.h"
 
 #include <iostream>
 #include <fstream>
