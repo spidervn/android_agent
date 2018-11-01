@@ -14,4 +14,5 @@ public:
     virtual std::string my_name() = 0;
 };
 
+typedef IWhateverItIs* PIWhateverItIs;
 #endif // !FASTMETRICS_APP_SOFTWARE_INTERFACE_MODELING_IWHATEVERITIS_H_

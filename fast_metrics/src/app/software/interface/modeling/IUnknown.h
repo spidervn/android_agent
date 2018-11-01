@@ -15,4 +15,6 @@ public:
     virtual IWhateverItIs* my_signal() = 0;
 };
 
+typedef IUnknown* PIUnknown;
+
 #endif // !FASTMETRICS_APP_SOFTWARE_INTERFACE_MODELING_IUNKNOWN_H_

@@ -1,14 +1,14 @@
-#ifndef FASTMETRICS_APP_SOFTWARE_INTERFACE_MODELING_IAFEATURE_H_
-#define FASTMETRICS_APP_SOFTWARE_INTERFACE_MODELING_IAFEATURE_H_
+#ifndef FASTMETRICS_APP_SOFTWARE_INTERFACE_MODELING_IANYFEATURE_H_
+#define FASTMETRICS_APP_SOFTWARE_INTERFACE_MODELING_IANYFEATURE_H_
 
 #include <vector>
 #include <string>
-#include "IDataType.h"
+#include "IAnyDataType.h"
 
-class IAFeature
+class IAnyFeature
 {
 public:
-    virtual ~IAFeature() {}
+    virtual ~IAnyFeature() {}
     virtual std::string my_name() = 0;
 
     virtual int instantiate(const char* name, 
@@ -17,4 +17,6 @@ public:
                 ) = 0;
 };
 
-#endif // !FASTMETRICS_APP_SOFTWARE_INTERFACE_MODELING_IAFEATURE_H_
+typedef IAnyDataType* PIAnyFeature;
+
+#endif // !FASTMETRICS_APP_SOFTWARE_INTERFACE_MODELING_IANYFEATURE_H_
