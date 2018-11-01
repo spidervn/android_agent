@@ -8,7 +8,7 @@
 #ifndef APP_TOOLKIT_IMPL_CKNOWLEDGECOMPLEXITY_H_
 #define APP_TOOLKIT_IMPL_CKNOWLEDGECOMPLEXITY_H_
 
-#include <toolkit/interface/IKnowledgeComplexity.h>
+#include <app/toolkit/interface/IKnowledgeComplexity.h>
 
 class CKnowledgeComplexity: public IKnowledgeComplexity {
 public:

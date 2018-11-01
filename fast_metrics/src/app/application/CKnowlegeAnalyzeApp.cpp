@@ -5,9 +5,9 @@
  *      Author: spider
  */
 
-#include <application/CKnowlegeAnalyzeApp.h>
+#include <app/application/CKnowlegeAnalyzeApp.h>
 
-#include "toolkit/impl/CKnowledgeComplexity.h"
+#include "app/toolkit/impl/CKnowledgeComplexity.h"
 #include <string>
 #include <vector>
 #include <stdlib.h>
@@ -42,6 +42,7 @@ void CKnowlegeAnalyzeApp::run(int argc, char* argv[])
 		myfile.close();
 	}
 
+	printf("Finish read file\r\n");
 	vector<string> v_Vocab;
 	IKnowledgeComplexity* pComplex;
 	pComplex = new CKnowledgeComplexity();
@@ -51,4 +52,6 @@ void CKnowlegeAnalyzeApp::run(int argc, char* argv[])
 	{
 		printf("Word[%d]=%s\r\n", (int)(i+1), v_Vocab[i].c_str());
 	}
+
+	delete pComplex;
 }

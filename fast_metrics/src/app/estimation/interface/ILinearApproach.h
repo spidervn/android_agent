@@ -9,15 +9,15 @@
 #define APP_ESTIMATION_INTERFACE_ILINEARAPPROACH_H_
 
 #include "IApproach.h"
-#include "metrics/interface/linear/ICodebase.h"
-#include "metrics/interface/linear/IUML.h"
-#include "metrics/interface/linear/IDesignInterface.h"
-#include "metrics/interface/linear/IDesignUnitTest.h"
-#include "metrics/interface/linear/ICodeInterface.h"
-#include "metrics/interface/linear/ICodeUnitTest.h"
-#include "metrics/interface/linear/IKnowledgeFundamental.h"
-#include "metrics/interface/linear/IRunUnitTest.h"
-#include "metrics/interface/linear/INativeSystemTest.h"
+#include "app/metrics/interface/linear/ICodebase.h"
+#include "app/metrics/interface/linear/IUML.h"
+#include "app/metrics/interface/linear/IDesignInterface.h"
+#include "app/metrics/interface/linear/IDesignUnitTest.h"
+#include "app/metrics/interface/linear/ICodeInterface.h"
+#include "app/metrics/interface/linear/ICodeUnitTest.h"
+#include "app/metrics/interface/linear/IKnowledgeFundamental.h"
+#include "app/metrics/interface/linear/IRunUnitTest.h"
+#include "app/metrics/interface/linear/INativeSystemTest.h"
 
 class ILinearApproach : public IApproach
 {

@@ -5,7 +5,7 @@
  *      Author: spider
  */
 
-#include <toolkit/impl/CKnowledgeComplexity.h>
+#include <app/toolkit/impl/CKnowledgeComplexity.h>
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -54,7 +54,7 @@ int CKnowledgeComplexity::distinctVocab(std::string content, std::vector<std::st
 				if (std::find(v_Vocab.begin(), v_Vocab.end(), currentWord) == v_Vocab.end())
 				{
 					v_Vocab.push_back(currentWord);
-					printf("Last Newword=%s; At Position %d; TextAround=%s\r\n", currentWord.c_str(), i, content.substr(i-5, 10).c_str());
+					// printf("Last Newword=%s; At Position %d; TextAround=%s\r\n", currentWord.c_str(), i, content.substr(i-5, 10).c_str());
 				}
 			}
 
@@ -91,7 +91,7 @@ int CKnowledgeComplexity::distinctVocab(std::string content, std::vector<std::st
 					if (std::find(v_Vocab.begin(), v_Vocab.end(), currentWord) == v_Vocab.end())
 					{
 						v_Vocab.push_back(currentWord);
-						printf("Newword=%s; At Position %d; TextAround=%s\r\n", currentWord.c_str(), i, content.substr(i-5, 10).c_str());
+						// printf("Newword=%s; At Position %d; TextAround=%s\r\n", currentWord.c_str(), i, content.substr(i-5, 10).c_str());
 					}
 				}
 			}

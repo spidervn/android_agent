@@ -8,8 +8,8 @@
 #ifndef APP_IO_IMPL_CSERIALIZER_H_
 #define APP_IO_IMPL_CSERIALIZER_H_
 
-#include "io/interface/ISerializer.h"
-#include "estimation/interface/IApproach.h"
+#include "app/io/interface/ISerializer.h"
+#include "app/estimation/interface/IApproach.h"
 
 class CSerializer: public ISerializer {
 public:
