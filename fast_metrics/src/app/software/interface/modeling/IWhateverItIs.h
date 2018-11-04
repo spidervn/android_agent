@@ -10,7 +10,6 @@ class IWhateverItIs
 {
 public:
     virtual ~IWhateverItIs() {}
-    
     virtual std::string my_name() = 0;
 };
 
