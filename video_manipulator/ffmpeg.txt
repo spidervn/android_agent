@@ -1,0 +1,14 @@
+1. Slice video
+	ffmpeg -i input.mkv -ss 00:01:00 -to 00:02:00 -c:v copy -c:a copy output.mp4
+
+2. Extract frames
+	2.1. Extract Every frame
+		ffmpeg -i video.webm thumb%04d.jpg -hide_banner
+	
+	2.2. Extract only 01 frame
+		ffmpeg -i video.webm -ss 00:00:07.000 -vframes 1 thumb.jpg
+
+	2.3. Extract frames in a regular time basis
+		Example - one frame every second:
+			ffmpeg -i video.webm -vf fps=1 thumb%04d.jpg -hide_banner
+

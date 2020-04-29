@@ -15,9 +15,9 @@ def print_readable(frompage, topage, arr):
 def print_pages(numpage, startId=1):
     ret = []
 
-    numpageAlign8 = int(8*(math.ceil(numpage/8.0)))
-    numpagea4 = int(math.ceil(numpageAlign8/8.0))
-    numpage = int(8 * numpagea4)
+    numpageAlign4 = int(4*(math.ceil(numpage/4.0)))
+    numpagea4 = int(math.ceil(numpageAlign4/4.0))
+    numpage = int(4 * numpagea4)
 
     print(numpagea4)
     startId = startId-1
@@ -25,14 +25,10 @@ def print_pages(numpage, startId=1):
     for i in range(numpagea4):
         print(i)
         pid = i + 1
-        ret.append(startId + 4*pid -2)
-        ret.append(startId + numpageAlign8 - 4*pid +3)
-        ret.append(startId + 4*pid)
-        ret.append(startId + numpageAlign8 - 4*pid + 1)
-        ret.append(startId + numpageAlign8 - 4*pid +4)
-        ret.append(startId + 4*pid - 3)
-        ret.append(startId + numpageAlign8-4*pid+2)
-        ret.append(startId + 4*pid - 1)
+        ret.append(startId + 2*pid)
+        ret.append(startId + numpageAlign4 - 2*pid + 1)
+        ret.append(startId + numpageAlign4-2*pid+2)
+        ret.append(startId + 2*pid - 1)
 
     return ret
 
@@ -43,8 +39,8 @@ def print_pages01(frompage, topage):
 
 numpg = 3
 
-frompg=20
-topg=99
+frompg=1
+topg=16
 
 r = print_pages01(frompg, topg)
 print_readable(frompg, topg, r)
