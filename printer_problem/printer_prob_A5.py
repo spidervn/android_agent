@@ -40,7 +40,15 @@ def print_pages01(frompage, topage):
 numpg = 3
 
 frompg=1
-topg=16
+topg=8
 
-r = print_pages01(frompg, topg)
-print_readable(frompg, topg, r)
+if __name__ == "__main__":
+
+	print("Usage: python printer_problem_A5.py <<frompage>> <<topage>>")
+
+	frompg=int(sys.argv[1])
+	topg=int(sys.argv[2])
+
+	print("Pages from to: ", frompg, topg)
+	r = print_pages01(frompg, topg)
+	print_readable(frompg, topg, r)
